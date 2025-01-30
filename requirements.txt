@@ -10,5 +10,5 @@ typer
 boto3
 pandas
 joblib
-scikit-learn
+scikit-learn==1.5.2
 category_encoders
