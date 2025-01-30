@@ -9,3 +9,6 @@ tqdm
 typer
 boto3
 pandas
+joblib
+scikit-learn
+category_encoders
