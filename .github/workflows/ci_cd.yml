@@ -25,8 +25,11 @@ jobs:
             AWS_ACCESS_KEY_ID: ${{ secrets.AKI }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.SAK }}
 
-      - name: Train model
+      - name: Get Data from S3
         run: python property_friends_real_state/modeling/get_data.py
+
+      - name: Train Model
+        run: python property_friends_real_state/modeling/train.py
 
       - name: Install Docker Compose
         run: |
