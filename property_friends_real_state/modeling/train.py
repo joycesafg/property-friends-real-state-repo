@@ -19,7 +19,7 @@ from tqdm import tqdm
 
 app = typer.Typer()
 
-def load_data(train_path:str, test_path:str) -> (pd.DataFrame, pd.DataFrame):
+def load_data(train_path:str, test_path:str):
     """
     Loads the train and test data into pandas DataFrames
     """

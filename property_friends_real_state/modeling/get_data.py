@@ -5,8 +5,8 @@ from pathlib import Path
 from loguru import logger
 
 # AWS Configuration (Set these using GitHub Secrets)
-AWS_ACCESS_KEY = "AKIAQNMQTYFT6BWCAVSL"#os.getenv("AWS_ACCESS_KEY_ID")
-AWS_SECRET_KEY = "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"#os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 S3_BUCKET = "case-property-friends"
 TEST_DATA_PATH = "test.csv"
 TRAIN_DATA_PATH = "train.csv"
