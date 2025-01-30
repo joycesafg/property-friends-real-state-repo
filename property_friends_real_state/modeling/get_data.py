@@ -14,10 +14,16 @@ TRAIN_DATA_PATH = "train.csv"
 PROJ_ROOT = Path(__file__).resolve().parents[2]
 logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
 
+
+
 LOCAL_TEST_PATH = PROJ_ROOT / "data/processed/test.csv"
 LOCAL_TRAIN_PATH = PROJ_ROOT / "data/processed/train.csv"
 
 # Temporary path for GitHub Actions
+
+# Create directories if they don't exist
+LOCAL_TEST_PATH.parent.mkdir(parents=True, exist_ok=True)
+LOCAL_TRAIN_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 
 # Download test dataset from S3
@@ -39,4 +45,4 @@ if __name__ == "__main__":
     trin_df = load_data(LOCAL_TRAIN_PATH)
     print("Test Data Loaded Successfully!")
     print(test_df.head())  # Preview data
-    print(trin_df.head()) 
+    
