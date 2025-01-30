@@ -7,4 +7,5 @@ pip
 python-dotenv
 tqdm
 typer
-
+boto3
+pandas
