@@ -28,6 +28,14 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.SAK }}
         run: echo "AWS credentials configured"
 
+      - name: Print AWS credentials environment variables
+        run: |
+          echo "AWS_ACCESS_KEY_ID: ${{ secrets.AKI }}"
+          echo "AWS_SECRET_ACCESS_KEY: ${{ secrets.SAK }}"
+                
+      - name: Print all environment variables
+        run: printenv
+
       - name: Get Data from S3
         run: python property_friends_real_state/modeling/get_data.py
 
