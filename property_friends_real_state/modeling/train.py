@@ -39,6 +39,7 @@ def main(
 ):
     # ---- REPLACE THIS WITH YOUR OWN CODE ----
    # print(train_path)
+    model_path.parent.mkdir(parents=True, exist_ok=True)
     logger.info("Load the data...")
     train, test = load_data(train_path, test_path)
     
