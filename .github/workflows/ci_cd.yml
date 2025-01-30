@@ -1,0 +1,49 @@
+name: Train Model & Deploy Locally
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  train-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: pip install -r app/requirements.txt
+        env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AKI }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.SAK }}
+
+      - name: Train model
+        run: python app/model.py
+
+      - name: Upload model artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: models/model.pkl
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt update
+          sudo apt install -y docker-compose
+
+      - name: Build and run FastAPI container
+        run: |
+          docker-compose up -d --build
+
+      - name: Check if FastAPI is running
+        run: |
+          sleep 5
+          curl -f http://localhost:8000 || (echo "FastAPI did not start" && exit 1)
