@@ -21,9 +21,12 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Configure AWS credentials
         env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AKI }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.SAK }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AKI }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SAK }}
+        run: echo "AWS credentials configured"
 
       - name: Get Data from S3
         run: python property_friends_real_state/modeling/get_data.py
