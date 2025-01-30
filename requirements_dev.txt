@@ -1,5 +1,4 @@
 awscli
-black
 flake8
 isort
 loguru
@@ -8,4 +7,8 @@ pip
 python-dotenv
 tqdm
 typer
--e .
+boto3
+pandas
+joblib
+scikit-learn==1.5.2
+category_encoders

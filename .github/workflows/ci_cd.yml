@@ -26,7 +26,7 @@ jobs:
         run: printenv
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements_dev.txt
 
       - name: Configure AWS credentials
         env:

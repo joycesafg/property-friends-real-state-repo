@@ -10,7 +10,7 @@ ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
 # Copy files
-COPY app/ /app/
+COPY property-friends-real-state-repo/property_friends_real_state/app/ /app/
 
 # Install dependencies
 RUN pip install --no-cache-dir -r /app/requirements.txt
