@@ -24,7 +24,7 @@ def print_metrics(predictions, target):
 def main(
     # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
     test_path: Path = Path(__file__).resolve().parents[2] / "data/processed/test.csv",
-    model_path: Path = Path(__file__).resolve().parents[2] / "models/model.pkl",
+    model_path: Path = Path(__file__).resolve().parents[1] / "app/model.pkl",
     #predictions_path: Path = PROCESSED_DATA_DIR / "test_predictions.csv",
     # -----------------------------------------
 ):
