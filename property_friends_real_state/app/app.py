@@ -10,6 +10,7 @@ import pandas as pd
 PROJ_ROOT = Path(__file__).resolve()#.parents[2]
 print(PROJ_ROOT)
 model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+print("############# MODEL PATH################", model_path)
 model = joblib.load(model_path)
 
 # Initialize FastAPI app
