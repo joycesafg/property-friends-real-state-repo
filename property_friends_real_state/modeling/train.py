@@ -43,6 +43,8 @@ def main(
     logger.info("Load the data...")
     train, test = load_data(train_path, test_path)
     
+    print("MODEL PATH: ", model_path)
+    
     train_cols = [
     col for col in train.columns if col not in ['id', 'target']
     ]
