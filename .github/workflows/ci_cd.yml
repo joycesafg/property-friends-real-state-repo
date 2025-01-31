@@ -48,16 +48,26 @@ jobs:
       - name: Train Model
         run: python property_friends_real_state/modeling/train.py
 
-      - name: Install Docker Compose
-        run: |
-          sudo apt update
-          sudo apt install -y docker-compose
+      - name: Evaluate Model
+        run: python property_friends_real_state/modeling/predict.py
 
-      - name: Build and run FastAPI container
-        run: |
-          docker-compose up -d --build
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Check if FastAPI is running
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PAT }}
+
+      - name: Build and Tag Docker Image
         run: |
-          sleep 5
-          curl -f http://localhost:8000 || (echo "FastAPI did not start" && exit 1)
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/my-fastapi-app
+          docker build -t $IMAGE_NAME:latest .
+          docker tag $IMAGE_NAME:latest $IMAGE_NAME:$(date +%Y%m%d%H%M%S)
+
+      - name: Push Docker Image to GHCR
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/my-fastapi-app
+          docker push $IMAGE_NAME --all-tags

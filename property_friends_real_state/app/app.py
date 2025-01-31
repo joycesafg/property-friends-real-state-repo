@@ -7,7 +7,7 @@ import os
 import pandas as pd
 
 # Load the trained model
-PROJ_ROOT = Path(__file__).resolve().parents[2]
+PROJ_ROOT = Path(__file__).resolve()#.parents[2]
 print(PROJ_ROOT)
 model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
 model = joblib.load(model_path)

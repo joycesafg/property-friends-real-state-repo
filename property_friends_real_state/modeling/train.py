@@ -34,7 +34,7 @@ def main(
     # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
     train_path: Path =  Path(__file__).resolve().parents[2] / "data/processed/train.csv",
     test_path: Path = Path(__file__).resolve().parents[2] / "data/processed/test.csv",
-    model_path: Path = Path(__file__).resolve().parents[2] / "models/",
+    model_path: Path = Path(__file__).resolve().parents[2] / "property_friends_real_state/app",
     # -----------------------------------------
 ):
     # ---- REPLACE THIS WITH YOUR OWN CODE ----
